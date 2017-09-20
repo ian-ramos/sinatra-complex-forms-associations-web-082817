@@ -32,7 +32,7 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
     @pet.update(params[:pet])
     if !params[:owner][:name].empty? #essentially overwriting the update made to owner in previous line if there is an owner here
-      @owner = Owner.create(name: params[:owner][:name])
+      @owner = Owner.create(params[:owner])
       @pet.update(owner_id: @owner.id)
     end
     redirect to "pets/#{@pet.id}"
